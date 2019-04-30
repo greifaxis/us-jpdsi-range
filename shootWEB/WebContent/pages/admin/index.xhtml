@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	<h:head>
+	</h:head>
+	<h:body>
+	<ui:composition template="/templates/template_admin.xhtml">
+		<ui:define name = "content">
+		<div id="main" class="wrapper style1">
+		<div class="container">
+		<section id="user">
+		<h:form id="form1">
+		<h:inputText id="search" value="#{adminBB.search}" pt:placeholder="Search...">
+			<f:ajax execute="search" event="keyup" render="accordion paginate" listener="#{adminBB.searchedList(adminBB.search, 1)}"></f:ajax>
+		</h:inputText>
+		<br />
+		<p:accordionPanel  id="accordion" value="#{adminBB.messageList}" var="msg" multiple="true" activeIndex="false" style="margin-bottom: 1em">
+        <p:tab title="#{msg.email}: #{msg.title}">
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:outputText
+                    value="#{msg.text}" />
+                <p>
+            		<h:outputText value="#{msg.createdAt}" >
+<!--     				<f:convertDateTime pattern="HH:mm dd.MM.yyyy" /> -->
+					</h:outputText>
+				</p>
+            	</h:panelGrid>
+
+        </p:tab>
+    </p:accordionPanel>
+    <h:panelGroup id="paginate">
+    <ui:repeat value="#{adminBB.pagingMessage}" var="str">
+    <h:commandButton value = "#{str}" id="przycisk" class="button small" style="width: 2em; padding: 0px;">
+    	<f:ajax event="click" listener="#{adminBB.searchedList(adminBB.search, str)}" render=":form1" />
+    </h:commandButton>
+    </ui:repeat>
+    </h:panelGroup>
+		</h:form>
+		</section>
+<!-- 		<h:form>
+		<h:dataTable id="table" value="#{adminBB.messageList}" var="msg">
+		<h:column><f:facet name="header">FROM</f:facet>#{msg.email}</h:column>
+		<h:column><f:facet name="header">TITLE</f:facet>#{msg.title}</h:column>
+		<h:column><f:facet name="header">DATE</f:facet>#{msg.createdAt}</h:column>
+		
+		</h:dataTable>
+		 <p:growl id="growl" showDetail="true" sticky="true" />  
+		</h:form> -->
+		</div>
+		</div>
+		</ui:define>
+		</ui:composition>
+</h:body>
+	</html>

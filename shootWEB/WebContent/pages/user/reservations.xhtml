@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	 	xmlns:b="http://bootsfaces.net/ui">
+	<h:head>
+		<title>#{index.title}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<h:outputStylesheet name="css/main.css" library="assets" />
+	</h:head>
+	<h:body>
+	<ui:composition template="/templates/template_user.xhtml">
+		<ui:define name = "content">
+				<section id="banner">
+					<div class="content">
+						<header>
+							<h2>#{index.title}</h2>
+							<p>Looking for the ultimate adrenaline rush?<br />
+							Come experience the ultimate shooting range in Poland.</p>
+						</header>
+						<span class="image"><h:graphicImage value="https://source.unsplash.com/gJBMRV1mjow/900x900" alt="" /></span>						
+					</div>
+					<a href="#one" class="goto-next scrolly">Next</a>
+				</section>		
+				
+				<section id="one" class="spotlight style1 bottom">
+					<span class="image fit main"><h:graphicImage value="https://source.unsplash.com/bGJ15W7Zseo/900x600" alt="" /></span>
+					<div class="content">
+						<div class="container">
+								<h3><i class="icon fas fa-paper-plane"></i> Contact Us!</h3>
+								<h:form>
+									<div class="row gtr-uniform gtr-50">
+										<div class="col-6 col-12-xsmall">
+											<h:inputText id="title" label=""  value="" a:placeholder="Title"></h:inputText>
+										</div>
+										<div class="col-6 col-12-xsmall">
+											<h:inputText id="email" label=""  value="" a:placeholder="Email"></h:inputText>
+										</div>
+										<div class="col-12">
+											<h:inputTextarea rows="6"  id="message" label=""  value="" a:placeholder="Enter Your Message"></h:inputTextarea>
+										</div>
+										<div class="col-12">
+											<ul class="actions">
+												<li><h:commandButton value="Send Message"  class="button primary fit"/></li>
+											</ul>
+										</div>
+									</div>
+								</h:form>
+						</div>
+					</div>
+				</section>
+		</ui:define> 
+	</ui:composition>
+	</h:body>
+</html>

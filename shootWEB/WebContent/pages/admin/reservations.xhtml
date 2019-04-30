@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	<h:head>
+	</h:head>
+	<h:body>
+<ui:composition template="/templates/template_admin.xhtml">
+		<ui:define name = "content">
+				<div id="main" class="wrapper style1">
+					<div class="container">
+						<header class="major">
+							<h2>Unconfirmed Reservations</h2>
+						</header>		
+				<section id="user">
+					<h:form id="form1">
+						<br />
+						<h:dataTable id="table" value="#{adminBB.reservList}" var="res">
+
+							<h:column>
+								<f:facet name="header">#{index.resUserId}</f:facet>
+      							#{res.user.firstName} #{res.user.lastName}
+   							</h:column>
+   							
+   							<h:column>
+								<f:facet name="header">#{index.resGunId}</f:facet>
+      							#{res.gun.name}
+   							</h:column>
+   							
+   							<h:column>
+								<f:facet name="header">#{index.resStandId}</f:facet>
+      							#{res.standId}
+   							</h:column>
+   							
+   							<h:column>
+								<f:facet name="header">#{index.resDate}</f:facet>
+									<h:outputText value="#{res.dateStart}" >
+									    <f:convertDateTime pattern="dd.MM.yyyy" />
+									</h:outputText>										
+   							</h:column>   							
+   							
+   							<h:column>
+								<f:facet name="header">#{index.resDate1}</f:facet>
+									<h:outputText value="#{res.dateStart}" >
+									    <f:convertDateTime pattern="HH:00" />
+									</h:outputText>								      							
+   							</h:column>
+   							
+   							<h:column>
+								<f:facet name="header">#{index.resDate2}</f:facet>
+									<h:outputText value="#{res.dateEnd}" >
+									    <f:convertDateTime pattern="HH:00" />
+									</h:outputText>	
+   							</h:column>   							   							
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="#{index.options}" />
+								</f:facet>
+								<h:commandButton value="#{index.resConfirm}" styleClass="button fit small"
+							style="padding: 0 1em 0 1em; margin: 0 0 0 0;" action="#{adminBB.confirm(res)}" />
+							</h:column>
+							
+						</h:dataTable>
+					</h:form>
+			</section>
+			</div>
+				<div class="container">
+						<header class="major">
+							<h2>Archived Reservations</h2>
+						</header>		
+				<section id="user">
+					<h:form id="form2">
+						<br />
+						<h:dataTable id="table" value="#{adminBB.reservArchivedList}" var="res">
+
+							<h:column>
+								<f:facet name="header">#{index.resUserId}</f:facet>
+      							#{res.user.firstName} #{res.user.lastName}
+   							</h:column>
+   							
+   							<h:column>
+								<f:facet name="header">#{index.resGunId}</f:facet>
+      							#{res.gun.name}
+   							</h:column>
+   							
+   							<h:column>
+								<f:facet name="header">#{index.resStandId}</f:facet>
+      							#{res.standId}
+   							</h:column>
+   							
+   							<h:column>
+								<f:facet name="header">#{index.resDate}</f:facet>
+									<h:outputText value="#{res.dateStart}" >
+									    <f:convertDateTime pattern="dd.MM.yyyy" />
+									</h:outputText>										
+   							</h:column>   							
+   							
+   							<h:column>
+								<f:facet name="header">#{index.resDate1}</f:facet>
+									<h:outputText value="#{res.dateStart}" >
+									    <f:convertDateTime pattern="HH:00" />
+									</h:outputText>								      							
+   							</h:column>
+   							
+   							<h:column>
+								<f:facet name="header">#{index.resDate2}</f:facet>
+									<h:outputText value="#{res.dateEnd}" >
+									    <f:convertDateTime pattern="HH:00" />
+									</h:outputText>	
+   							</h:column>   							   							
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="#{index.options}" />
+								</f:facet>
+							
+								<h:commandButton value="#{index.resDelete}" styleClass="button fit small" action="#{adminBB.removeReservation(res)}"
+								 onclick="if (! confirm('Proceed?')) return false"/>
+								</h:column>
+		
+
+						</h:dataTable>
+					</h:form>
+			</section>
+			</div>
+			</div>
+		</ui:define>
+		</ui:composition>
+</h:body>
+	</html>

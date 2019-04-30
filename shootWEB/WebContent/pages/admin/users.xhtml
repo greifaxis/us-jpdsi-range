@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	<h:head>
+	</h:head>
+	<h:body>
+	<ui:composition template="/templates/template_admin.xhtml">
+		<ui:define name = "content">
+				<div id="main" class="wrapper style1">
+					<div class="container">
+						<header class="major">
+							<h2>User Table</h2>
+						</header>		
+				<section id="user">
+					<h:form id="form1">
+						<h:inputText id="search" value="#{adminBB.search}" pt:placeholder="Search...">
+							<f:ajax execute="search" event="keyup" render="table paginate"
+								listener="#{adminBB.searchedListUser(adminBB.search, 1)}" ></f:ajax>
+						</h:inputText>
+						<br />
+						<h:dataTable id="table" value="#{adminBB.userList}" var="user">
+
+							<h:column>
+								<f:facet name="header">#{index.userId}</f:facet>    				
+    							 #{user.id}
+   							</h:column>
+
+							<h:column>
+								<f:facet name="header">#{index.firstname}</f:facet>
+      							#{user.firstName}
+   							</h:column>
+   							
+   							<h:column>
+								<f:facet name="header">#{index.lastname}</f:facet>
+      							#{user.lastName}
+   							</h:column>
+   							
+   							<h:column>
+								<f:facet name="header">#{index.email}</f:facet>
+      							#{user.email}
+   							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="#{index.options}" />
+								</f:facet>
+								
+								<f:facet name="header">
+								</f:facet>
+								<h:commandButton value="#{index.deleteUser}" styleClass="button primary small"
+						style="margin-right: 10px;" onclick="if (! confirm('R U SURE?')) return false"/>
+							</h:column>
+		
+
+						</h:dataTable>
+						<h:panelGroup id="paginate">
+											
+					    <ui:repeat value="#{adminBB.pagingUser}" var="str">
+					    <h:commandButton value = "#{str}" id="przycisk" class="button small" style="width: 2em; padding: 0px;">
+					    	<f:ajax event="click" listener="#{adminBB.searchedListUser(adminBB.search, str)}" render=":form1" />
+					    </h:commandButton>
+					    </ui:repeat>
+					    
+						</h:panelGroup>
+					</h:form>
+			</section>
+			</div>
+			</div>
+		</ui:define>
+		</ui:composition>
+</h:body>
+	</html>

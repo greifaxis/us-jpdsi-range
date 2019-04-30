@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+	<f:metadata>
+	<f:viewAction action="#{userBB.onLoad()}" />
+	</f:metadata>
+	<h:head>
+		<title>#{index.title}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<h:outputStylesheet name="css/main.css" library="assets" />
+	</h:head>
+	<h:body style="background: #1c1d26; color: #ffffff">
+	<!-- <ui:composition template="/templates/template_user.xhtml">
+		<ui:define name = "content"> -->
+		<header style="marign: 0 0 1em 0;" class="major" >
+					<div class="row">
+					<div class="col-2 off-5 fit" style="padding-left: 0;">
+							<h2><a href = "weaponry.xhtml" class="button primary fit" ><i class="icon fas fa-undo"></i></a></h2>
+						</div>
+						</div>
+						</header>
+							<header class="major">
+					<div class="row">
+					<div class="col-2 off-5 fit" style="padding-left: 0;">
+							<h2><h:outputText value="#{userBB.reservation.gun.name}" /></h2>
+						</div>
+						</div>
+						</header>	
+			<div id="main" class="wrapper style1" style="padding-top: 0;">
+				<div class="container">
+					<section>
+					<div class="row">
+					<div class="col-6 off-3">
+					<h:form>
+										
+						<b:selectOneMenu id = "selectMenu" required="true" requiredMessage="You need  to specify the stand" label="Select stand" value="#{userBB.reservation.standId}">
+						<f:selectItem itemlabel="Choose stand" itemValue="#{index.resSelect}"/>
+							<f:selectItems value="#{userBB.standList}" />
+						</b:selectOneMenu>
+					
+						<b:dateTimePicker id="datepicker1" value="#{userBB.reservation.dateStart}" mode="inline" render="true" format="DD.MM.YYYY HH" show-time="true" label="Choose date and hour"  />
+					
+
+					
+					<b:commandButton value = "#{index.book}" action="#{userBB.reserveTerm(remoteClient.getDetails().id)}" class = "button primary fit"></b:commandButton>
+ 					</h:form>
+ 					</div>
+</div>
+					</section>
+				</div>
+			</div>
+	<!-- 	</ui:define> 
+	</ui:composition> -->
+	</h:body>
+</html>

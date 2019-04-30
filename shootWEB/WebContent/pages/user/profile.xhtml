@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	 	xmlns:b="http://bootsfaces.net/ui">
+	 	<f:metadata>
+	<f:viewAction action="#{userBB.onLoadUser()}" />
+</f:metadata>
+	<h:head>
+		<title>#{index.title}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<h:outputStylesheet name="css/main.css" library="assets" />
+	</h:head>
+	<h:body>
+	<ui:composition template="/templates/template_user.xhtml">
+		<ui:define name = "content">
+				<div id="main" class="wrapper style1">
+					<div class="container">
+						<header class="major">
+							<h2>#{index.profileTitle}</h2>
+						</header>		
+				<section id="profile">
+					<h:form id="myprofile">
+					<h:messages></h:messages>
+						<div class="row gtr-uniform gtr-50">
+							<div class="col-6 off-3">
+								<h:inputText id="nickname" label="Username"  value="#{userBB.user.nickname}" a:placeholder="Username" disabled="true"></h:inputText>
+							</div>
+							<div class="col-6 off-3">
+								<h:inputText id="email" label="Email"  value="#{userBB.user.email}" a:placeholder="Email"></h:inputText>
+							</div>								
+							<div class="col-6 off-3">
+								<h:inputText id="firstName" label="First Name"  value="#{userBB.user.firstName}" a:placeholder="First Name"></h:inputText>
+							</div>
+							<div class="col-6 off-3">
+								<h:inputText id="lastName" label="First Name"  value="#{userBB.user.lastName}" a:placeholder="Last Name"></h:inputText>
+							</div>
+							<div class="col-4 off-5" style="text-align: right;">
+								<h:outputText value="Registered: #{remoteClient.getDetails().createdAt}">
+										 <f:convertDateTime pattern="dd.MM.yyyy" />
+								</h:outputText>
+							</div>													
+							<div class="col-6 off-3">
+								<ul class="actions fit">
+									<li><h:commandButton value="#{index.profileButton}"  action="#{userBB.updateUser()}" class="button primary fit"/></li>
+								</ul>
+							</div>
+						</div>					
+					</h:form>
+				</section>
+				</div>
+				</div>
+		</ui:define> 
+	</ui:composition>
+	</h:body>
+</html>

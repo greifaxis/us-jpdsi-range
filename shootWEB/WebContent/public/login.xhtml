@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	 xmlns:b="http://bootsfaces.net/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	>
+	    <h:head>
+        <title>BootsFaces Basic Page</title>
+    </h:head>
+    <h:body>
+	<ui:composition template="/templates/template.xhtml">
+		<ui:define name = "content">
+		<div id="main" class="wrapper style1">
+		<div class="container">
+			<section id="content">
+			<section>
+				<h:form>
+				<div class="row">
+				<div class="col-4"></div>
+					<div class="col-4">
+			      		<h:inputText id="username" label=""  value="#{loginBB.login}" a:placeholder="Username"></h:inputText>
+					</div>	
+					<div class="col-4"></div> 
+	      		</div>
+	      		<div class="row" style="margin-top:2em">
+	      		<div class="col-4"></div>
+					<div class="col-4">
+			    		<h:inputSecret id="password" label=""  value="#{loginBB.pass}" a:placeholder="Password"></h:inputSecret>				
+					</div>
+					<div class="col-4"></div>
+				</div>
+	    		<div class="row" style="margin-top:2em">
+	    			<div class="col-4"></div>
+ 					<div class="col-4">
+			 			<h:commandButton value="Login" action="#{loginBB.doLogin()}" class="button primary fit"/>
+			 		</div>
+ 					<div class="col-4"></div>
+			    </div>
+				</h:form>	
+			</section>			
+			</section>
+			</div>
+		</div>
+    	</ui:define> 
+	</ui:composition>
+    </h:body>
+</html>

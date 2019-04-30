@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	<h:head>
+	</h:head>
+	<h:body>
+	<ui:composition template="/templates/template.xhtml">
+		<ui:define name = "content">
+			<div id="main" class="wrapper style1">
+				<div class="container">
+						<header class="major">
+							<h2>Our Arsenal</h2>
+						</header>	
+			
+					<section id="guns">
+						<b:row>
+						<ui:repeat  value="#{guestBB.gunList}" var="gun">
+						  <b:column col-sm="6" col-md="4" style="margin-bottom: 1em;">
+						    <b:thumbnail style="height: 45em; display: table-cell;  vertical-align: bottom;">
+						      <h:graphicImage value="#{gun.imageUrl}" alt="" />
+						      <f:facet name="caption">
+						        <h3>#{gun.name}</h3>
+						        <h5>Caliber: #{gun.caliber}</h5>
+   						        <h5>Magazine size: #{gun.magazine}</h5>
+		 						<h5>Weight: #{gun.weight}</h5>
+						        <h6 style="text-align: justify;">#{gun.text}</h6>
+						      </f:facet>
+						    </b:thumbnail>
+						  </b:column>
+						  </ui:repeat>
+						</b:row> 
+					</section>
+				</div>
+			</div>
+		</ui:define> 
+	</ui:composition>
+	</h:body>
+</html>
